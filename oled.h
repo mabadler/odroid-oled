@@ -67,8 +67,7 @@ Modified for use with Odroid by Far Horizons (2018)
 #define VERTICAL_AND_RIGHT_HORIZONTAL_SCROLL 0x29
 #define VERTICAL_AND_LEFT_HORIZONTAL_SCROLL 0x2A
 
-// make this extend later...
-class Oled {
+class Oled : public Adafruit_GFX {
  public:
   Oled(int RST);
 

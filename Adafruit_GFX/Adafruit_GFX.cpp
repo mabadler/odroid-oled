@@ -83,7 +83,7 @@ void Adafruit_GFX::drawCircle(int x0, int y0, int r,
   }
 }
 
-void Adafruit_GFX::drawCircleHelper( int x0, int y0,
+void Adafruit_GFX::drawCircleHelper(int x0, int y0,
                int r, int cornername, int color) {
   int f     = 1 - r;
   int ddF_x = 1;
@@ -360,7 +360,7 @@ void Adafruit_GFX::drawBitmap(int x, int y,
   }
 }
 
-void Adafruit_GFX::write(int c) {
+void Adafruit_GFX::write(char c) {
   if (c == '\n') {
     cursor_y += textsize*8;
     cursor_x  = 0;
@@ -377,7 +377,7 @@ void Adafruit_GFX::write(int c) {
 }
 
 // Draw a character
-void Adafruit_GFX::drawChar(int x, int y, unsigned char c,
+void Adafruit_GFX::drawChar(int x, int y, char c,
 			    int color, int bg, int size) {
 
   if((x >= _width)            || // Clip right
