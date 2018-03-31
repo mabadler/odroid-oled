@@ -15,7 +15,6 @@ All text above, and the splash screen below must be included in any redistributi
 Modified by Far Horizons for use with Odroid (208)
 *********************************************************************/
 
-#include <util/delay.h>
 #include <stdlib.h>
 
 #include <wiringPiI2C.h>
