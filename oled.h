@@ -86,7 +86,7 @@ class Oled : public Adafruit_GFX {
   void startscrolldiagleft(int start, int stop);
   void stopscroll(void);
 
-  void drawPixel(int16_t x, int16_t y, uint16_t color);
+  void drawPixel(int x, int y, int color);
 
  private:
   int _i2caddr;
