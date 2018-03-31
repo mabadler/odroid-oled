@@ -4,6 +4,50 @@
 
 #define _BV(x) 1 << x
 
+#define BLACK 0
+#define WHITE 1
+
+#define I2C_ADDRESS   0x3C
+
+#define LCDWIDTH 128
+#define LCDHEIGHT 64
+
+
+#define SETCONTRAST 0x81
+#define DISPLAYALLON_RESUME 0xA4
+#define DISPLAYALLON 0xA5
+#define NORMALDISPLAY 0xA6
+#define INVERTDISPLAY 0xA7
+#define DISPLAYOFF 0xAE
+#define DISPLAYON 0xAF
+
+#define SETDISPLAYOFFSET 0xD3
+#define SETCOMPINS 0xDA
+
+#define SETVCOMDETECT 0xDB
+
+#define SETDISPLAYCLOCKDIV 0xD5
+#define SETPRECHARGE 0xD9
+
+#define SETMULTIPLEX 0xA8
+
+#define SETLOWCOLUMN 0x00
+#define SETHIGHCOLUMN 0x10
+
+#define SETSTARTLINE 0x40
+
+#define MEMORYMODE 0x20
+
+#define COMSCANINC 0xC0
+#define COMSCANDEC 0xC8
+
+#define SEGREMAP 0xA0
+
+#define CHARGEPUMP 0x8D
+
+#define EXTERNALVCC 0x1
+#define SWITCHCAPVCC 0x2
+
 // the memory buffer for the LCD
 
 static int buffer[LCDHEIGHT * LCDWIDTH / 8] = { 
