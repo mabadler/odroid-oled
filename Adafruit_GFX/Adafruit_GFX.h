@@ -38,7 +38,7 @@ class Adafruit_GFX {
       int radius, int color),
     drawBitmap(int x, int y, const int *bitmap,
       int w, int h, int color),
-    drawChar(int x, int y, unsigned char c, int color,
+    drawChar(int x, int y, char c, int color,
       int bg, int size),
     setCursor(int x, int y),
     setTextColor(int c),

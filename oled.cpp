@@ -20,7 +20,7 @@ Modified by Far Horizons for use with Odroid (208)
 #include "./wiringPi/wiringPi/wiringPiI2C.h"
 
 #include "Adafruit_GFX/Adafruit_GFX.h"
-#include "Oled.h"
+#include "oled.h"
 
 // the memory buffer for the LCD
 
@@ -91,10 +91,8 @@ static int buffer[LCDHEIGHT * LCDWIDTH / 8] = {
 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 };
 
-
-
 // the most basic function, set a single pixel
-void Oled::drawPixel(int16_t x, int16_t y, int color) {
+void Oled::drawPixel(int x, int y, int color) {
   if ((x < 0) || (x >= width()) || (y < 0) || (y >= height()))
     return;
 
@@ -181,8 +179,8 @@ void Oled::invertDisplay(int i) {
 void Oled::command(int c) { 
   // I2C
   int control = 0x00;   // Co = 0, D/C = 0
-  wiringPiI2cWrite(control);
-  wiringPiI2cWrite(c);
+  wiringPiI2cWrite(_i2caddr, control);
+  wiringPiI2cWrite(_i2caddr, c);
 }
 
 // startscrollright
@@ -255,8 +253,8 @@ void Oled::stopscroll(void){
 
 void Oled::data(int c) {
   int control = 0x40;   // Co = 0, D/C = 1
-  wiringPiI2CWrite(control);
-  wiringPiI2CWrite(c);
+  wiringPiI2CWrite(_i2caddr, control);
+  wiringPiI2CWrite(_i2caddr,c);
 }
 
 void Oled::display(void) {
@@ -270,9 +268,9 @@ void Oled::display(void) {
   // I2C
   for (int i=0; i<(LCDWIDTH*LCDHEIGHT/8); i++) {
     // send a bunch of data in one xmission
-    wiringPiI2CWrite(0x40);
+    wiringPiI2CWrite(_i2caddr ,0x40);
     for (int x=0; x<16; x++) {
-       wiringPiI2CWrite(buffer[i]);
+       wiringPiI2CWrite(_i2caddr, buffer[i]);
        i++;
     }
     i--;
@@ -280,9 +278,9 @@ void Oled::display(void) {
 
   if (LCDHEIGHT == 32) {
     for (int i=0; i<(LCDWIDTH*LCDHEIGHT/8); i++) {
-      wiringPiI2CWrite(0x40);
+      wiringPiI2CWrite(_i2caddr, 0x40);
       for (int x=0; x<16; x++) {
-        wiringPiI2CWrite((int)0x00);
+        wiringPiI2CWrite(_i2caddr, (int)0x00);
         i++;
       }
       i--;
