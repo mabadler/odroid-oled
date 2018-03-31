@@ -264,10 +264,7 @@ void Oled::display(void) {
   command(SETLOWCOLUMN | 0x0);  // low col = 0
   command(SETHIGHCOLUMN | 0x0);  // hi col = 0
   command(SETSTARTLINE | 0x0); // line #0
-  // save I2C bitrate
-  int twbrbackup = TWBR;
-  TWBR = 12; // upgrade to 400KHz!
-
+  
   // I2C
   for (int i=0; i<(LCDWIDTH*LCDHEIGHT/8); i++) {
     // send a bunch of data in one xmission
@@ -289,7 +286,6 @@ void Oled::display(void) {
       i--;
     }
   }
-  TWBR = twbrbackup;
 }
 
 void Oled::clearDisplay(void) {
