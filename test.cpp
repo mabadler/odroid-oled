@@ -120,8 +120,8 @@ static int buffer[LCDHEIGHT * LCDWIDTH / 8] = {
 void command(int c) { 
   // I2C
   int control = 0x00;   // Co = 0, D/C = 0
-  wiringPiI2CWrite(_i2caddr, control);
-  wiringPiI2CWrite(_i2caddr, c);
+  wiringPiI2CWrite(I2C_ADDRESS, control);
+  wiringPiI2CWrite(I2C_ADDRESS, c);
 }
 
 void begin() {
@@ -188,9 +188,9 @@ void display(void) {
   // I2C
   for (int i=0; i<(LCDWIDTH*LCDHEIGHT/8); i++) {
     // send a bunch of data in one xmission
-    wiringPiI2CWrite(_i2caddr ,0x40);
+    wiringPiI2CWrite(I2C_ADDRESS ,0x40);
     for (int x=0; x<16; x++) {
-       wiringPiI2CWrite(_i2caddr, buffer[i]);
+       wiringPiI2CWrite(I2C_ADDRESS, buffer[i]);
        i++;
     }
     i--;
@@ -198,9 +198,9 @@ void display(void) {
 
   if (LCDHEIGHT == 32) {
     for (int i=0; i<(LCDWIDTH*LCDHEIGHT/8); i++) {
-      wiringPiI2CWrite(_i2caddr, 0x40);
+      wiringPiI2CWrite(I2C_ADDRESS, 0x40);
       for (int x=0; x<16; x++) {
-        wiringPiI2CWrite(_i2caddr, (int)0x00);
+        wiringPiI2CWrite(I2C_ADDRESS, (int)0x00);
         i++;
       }
       i--;
