@@ -1,3 +1,6 @@
+#ifndef ADAFRUIT_GFX_H
+#define ADAFRUIT_GFX_H
+
 #define swap(a, b) { int t = a; a = b; b = t; }
 
 class Adafruit_GFX {
@@ -67,3 +70,5 @@ class Adafruit_GFX {
   bool
     wrap; // If set, 'wrap' text at right edge of display
 };
+
+#endif

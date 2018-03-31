@@ -12,6 +12,9 @@ All text above, and the splash screen must be included in any redistribution
 Modified for use with Odroid by Far Horizons (2018)
 *********************************************************************/
 
+#ifndef OLED_H
+#define OLED_H
+
 #include "Adafruit_GFX/Adafruit_GFX.h"
 
 #define BLACK 0
@@ -92,3 +95,5 @@ class Oled : public Adafruit_GFX {
   int _i2caddr;
 
 };
+
+#endif
