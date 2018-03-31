@@ -16,7 +16,7 @@ Modified by Far Horizons for use with Odroid (208)
 *********************************************************************/
 
 #include <stdlib.h>
-#include <stdio.h>
+#include <cstring>
 
 #include "./wiringPi/wiringPi/wiringPiI2C.h"
 
@@ -182,8 +182,8 @@ void Oled::invertDisplay(int i) {
 void Oled::command(int c) { 
   // I2C
   int control = 0x00;   // Co = 0, D/C = 0
-  wiringPiI2cWrite(_i2caddr, control);
-  wiringPiI2cWrite(_i2caddr, c);
+  wiringPiI2CWrite(_i2caddr, control);
+  wiringPiI2CWrite(_i2caddr, c);
 }
 
 // startscrollright
@@ -264,7 +264,7 @@ void Oled::display(void) {
   command(SETLOWCOLUMN | 0x0);  // low col = 0
   command(SETHIGHCOLUMN | 0x0);  // hi col = 0
   command(SETSTARTLINE | 0x0); // line #0
-  
+
   // I2C
   for (int i=0; i<(LCDWIDTH*LCDHEIGHT/8); i++) {
     // send a bunch of data in one xmission
