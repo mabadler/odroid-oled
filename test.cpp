@@ -116,7 +116,13 @@ static int buffer[LCDHEIGHT * LCDWIDTH / 8] = {
 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 };
-  
+
+void command(int c) { 
+  // I2C
+  int control = 0x00;   // Co = 0, D/C = 0
+  wiringPiI2CWrite(_i2caddr, control);
+  wiringPiI2CWrite(_i2caddr, c);
+}
 
 void begin() {
   int vccstate = 0x2;
@@ -172,13 +178,6 @@ void invertDisplay(int i) {
   } else {
     command(NORMALDISPLAY);
   }
-}
-
-void command(int c) { 
-  // I2C
-  int control = 0x00;   // Co = 0, D/C = 0
-  wiringPiI2CWrite(_i2caddr, control);
-  wiringPiI2CWrite(_i2caddr, c);
 }
 
 void display(void) {
