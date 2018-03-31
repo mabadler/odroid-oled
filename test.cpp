@@ -166,7 +166,7 @@ void begin() {
 }
 
 
-void Oled::invertDisplay(int i) {
+void invertDisplay(int i) {
   if (i) {
     command(INVERTDISPLAY);
   } else {
@@ -174,14 +174,14 @@ void Oled::invertDisplay(int i) {
   }
 }
 
-void Oled::command(int c) { 
+void command(int c) { 
   // I2C
   int control = 0x00;   // Co = 0, D/C = 0
   wiringPiI2CWrite(_i2caddr, control);
   wiringPiI2CWrite(_i2caddr, c);
 }
 
-void Oled::display(void) {
+void display(void) {
   command(SETLOWCOLUMN | 0x0);  // low col = 0
   command(SETHIGHCOLUMN | 0x0);  // hi col = 0
   command(SETSTARTLINE | 0x0); // line #0
@@ -209,6 +209,11 @@ void Oled::display(void) {
   }
 }
 
-void Oled::clearDisplay(void) {
+void clearDisplay(void) {
   memset(buffer, 0, (LCDWIDTH*LCDHEIGHT/8));
+}
+
+int main() {
+  begin();
+  display();
 }
