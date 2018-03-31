@@ -17,7 +17,7 @@ Modified by Far Horizons for use with Odroid (208)
 
 #include <stdlib.h>
 
-#include <wiringPiI2C.h>
+#include "./wiringPi/wiringPi/wiringPiI2C.h"
 
 #include "Adafruit_GFX/Adafruit_GFX.h"
 #include "Oled.h"
