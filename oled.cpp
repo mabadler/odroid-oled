@@ -17,10 +17,7 @@ Modified by Far Horizons for use with Odroid (208)
 
 #include <stdlib.h>
 #include <cstring>
-
 #include "./wiringPi/wiringPi/wiringPiI2C.h"
-
-#include "Adafruit_GFX/Adafruit_GFX.h"
 #include "oled.h"
 
 #define _BV(x) 1 << x
